@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="webgl">
+<title>webgl</title>
+<script id="vshader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vTexCoord;
+uniform float time;
+uniform vec2  resolution;
+varying vec2 texCoord;
+
+void main(){
+    gl_Position = vPosition;
+    texCoord.xy = vTexCoord.xy;
+}
+</script>
+
+<script id="fshader" type="x-shader/x-fragment"> 
+    #ifdef GL_ES
+    precision highp float;
+    #endif
+    
+    varying vec2 texCoord;
+    uniform float time;
+    uniform vec2 mouse;
+    uniform vec2 resolution;
+    
+    vec4 CochinealRed () {
+        return vec4(1.0 / (255.0 / 174.0), 1.0 / (255.0 / 43.0), 1.0 / (255.0 / 82.0), 1.0);
+    }
+    
+    vec2 Repeat2D(vec2 p) {
+        vec2 r = vec2(abs(p.x), abs(p.y));
+        return mod(r, 0.5) - 0.25;
+    }
+    
+    void main(){
+        vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+        float t = mod(time * 0.1, 1.0);
+        float d = distance(p, vec2(0.0, 0.0)) * 0.5;
+        float a = degrees(atan(p.y, -p.x) + 3.14) + 360.0;
+        if ((mod(a + t * 360.0 - d * 360.0, 30.0) > 25.0 - d * 25.0 * mouse.x)) {
+            gl_FragColor = CochinealRed();
+        } else if (!(mod(a + -t * 360.0 + d * 360.0, 30.0) > 25.0 - d * 25.0 * mouse.x)) {
+            gl_FragColor = vec4(0.5, 1.0, 0, 1.0);
+        }else {
+            gl_FragColor = vec4(0.2, 0.2, 0.2, 1.0);
+        }
+    }
+</script>
+
+<script src="webgl.js"></script>
+
+</head>
+<body>
+<div style="width:320px; height:240px; margin:0 auto;">
+    <canvas id="cv"></canvas>
+</div>
+</body> 
+</html>
+
