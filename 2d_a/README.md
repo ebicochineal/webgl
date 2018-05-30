@@ -1,1 +1,1 @@
-[2d_a](https://ebicochineal.github.io/webgl/2d_a/)
+[github.io](https://ebicochineal.github.io/webgl/2d_a/)

@@ -1,0 +1,2 @@
+[github.io](https://ebicochineal.github.io/webgl/mandelbox/)  
+[http://blog.hvidtfeldts.net/index.php/2011/11/distance-estimated-3d-fractals-vi-the-mandelbox/](http://blog.hvidtfeldts.net/index.php/2011/11/distance-estimated-3d-fractals-vi-the-mandelbox/)

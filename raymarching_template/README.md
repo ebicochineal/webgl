@@ -1,1 +1,1 @@
-[raymarching_template](https://ebicochineal.github.io/webgl/raymarching_template/)
+[github.io](https://ebicochineal.github.io/webgl/raymarching_template/)
